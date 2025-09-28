@@ -57,6 +57,26 @@ In our code reviews there are 3 things we check first:
 Asking questions to understand the problem is always better than implementing the right solution for the wrong problem.
 
 
+## How to Run
+
+**Requirements:** Python 3.12 or higher
+
+To start the project using Docker:
+
+```bash
+docker compose up
+```
+
+To run the tests:
+```bash
+pytest
+```
+
+You can also run the example checkout directly with Python:
+```bash
+python main.py
+```
+
 ## Questions
 
 1. ¿Cómo interactúan los descuentos si varios aplican? Ejemplo: Si un cliente compra 2 VOUCHER, 3 TSHIRT y un MUG, ¿qué descuentos se aplican primero? Ya que dependiendo del orden el precio final puede variar
