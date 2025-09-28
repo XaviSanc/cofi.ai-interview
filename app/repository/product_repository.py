@@ -1,12 +1,16 @@
 import json
 from pathlib import Path
-
+import os
 from app.models.product import Product
 
 
 class ProductRepository:
 
-    def __init__(self, config_path: str = "config/products.json"):
+    def __init__(self, config_path: str = None):
+        if config_path is None:
+            base_dir = os.path.dirname(os.path.dirname(__file__))
+            config_path = os.path.join(base_dir, "config", "products.json")
+
         self.product_catalog = {}
         self._load_products(config_path)
 
@@ -17,7 +21,7 @@ class ProductRepository:
         with path.open("r", encoding="utf-8") as f:
             data = json.load(f)
 
-        for item in data.get("products", []):
+        for item in data:
             product = Product(
                 code=item["code"],
                 name=item["name"],
